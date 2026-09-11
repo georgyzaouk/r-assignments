@@ -1,0 +1,28 @@
+{
+    "id": "E962BE0E",
+    "path": "//wsl.localhost/Ubuntu-24.04/home/gman/Documents/BS-Bioinformatics/biostatistics-assignment/biostatistics-assignment.Rmd",
+    "project_path": "biostatistics-assignment.Rmd",
+    "type": "r_markdown",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1789132627327.0,
+    "source_on_save": false,
+    "relative_order": 1,
+    "properties": {
+        "tempName": "Untitled1",
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "76,0",
+        "scrollLine": "62",
+        "last_setup_crc32": "f5375cc9bb338d19"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1789133641,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1789133641951,
+    "read_only": false,
+    "read_only_alternatives": []
+}
