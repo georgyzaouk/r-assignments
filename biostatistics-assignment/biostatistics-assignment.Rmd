@@ -9,6 +9,12 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+```{r}
+
+library("ggplot2")
+
+```
+
 # Exercise 1
 
 A study was conducted to investigate how effective a new diet was in lowering cholesterol. Results for the randomly selected subjects are shown below. The differences are assumed to have a normal distribution.
@@ -61,6 +67,7 @@ obtaining the following interval scores :
 | 4  | 1  |
 
 I) Find the mean, median, mode, quartiles, 56th percentile, variance, standard deviation, minimum, and maximum of ‘creativity’.
+
 Draw a histogram for ‘mood’.
 
 II) You want to know if ‘creativity’ can be predicted from ‘mood’.
@@ -75,6 +82,94 @@ Write the linear equation.
 
 ```{r}
 
+data_exo2 <- data.frame (
+  Creativity = c(7, 6, 11, 4, 5, 7, 4, 5, 6, 4),
+  Mood = c(10, 8, 9, 6, 5, 3, 7, 2, 4, 1)
+)
 
 ```
+
+## I
+
+```{r}
+
+#
+summary(data_exo2$Creativity)     # shows mean, median, quartiles, min, max
+
+# 
+cat("\n")
+
+# mean & median
+sprintf("mean = %f", mean(data_exo2$Creativity))
+sprintf("median = %f", median(data_exo2$Creativity))
+
+# mode is not a built-in function in R, so we can calculate it manually
+mode <- as.numeric(names(sort(table(data_exo2$Creativity), decreasing=TRUE)[1]))
+sprintf("mode = %f", mode)
+
+# quantiles
+q <- quantile(data_exo2$Creativity, probs = c(0.25, 0.5, 0.75))
+sprintf(
+  "Q1 = %.2f, Q2 = %.2f, Q3 = %.2f",
+  q[1], q[2], q[3]
+)
+sprintf(
+  "56th percentile = %.2f",
+  quantile(data_exo2$Creativity, probs = 0.56)
+)
+
+# var, sd, min, max
+sprintf("variance = %f",var(data_exo2$Creativity))
+sprintf("standard deviation = %f",sd(data_exo2$Creativity))
+sprintf("minimum = %f",min(data_exo2$Creativity))
+sprintf("maximum = %f",max(data_exo2$Creativity))
+
+```
+
+```{r}
+
+# hist for mood
+hist(
+  data_exo2$Mood,
+  breaks = seq(0, 10, by = 1),
+  main = "Histogram of Mood",
+  xlab = "Mood",
+  ylab = "Frequency"
+)
+
+# barplot
+barplot(
+  data_exo2$Mood,
+  main = "Mood Scores",
+  xlab = "Observation",
+  ylab = "Mood"
+)
+
+```
+
+## II
+
+```{r}
+
+# scatter diagram (plot) to study the relationship between ‘creativity’ and ‘mood’
+ggplot(data_exo2, aes(x = Mood, y = Creativity)) +
+  geom_point() +
+  labs(title = "Scatter Diagram of Creativity vs Mood",
+       x = "Mood",
+       y = "Creativity")
+
+
+```
+
+Are the assumptions for the correlation test met?
+
+
+```{r}
+
+# correlation test
+cor_test <- cor.test(data_exo2$Mood, data_exo2$Creativity)
+summary(cor_test)
+
+```
+
 
